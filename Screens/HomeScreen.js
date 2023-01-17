@@ -8,6 +8,7 @@ import {
   FlatList,
   TouchableOpacity,
   TextInput,
+  ScrollView,
 } from "react-native";
 import React from "react";
 import Nav from "../Components/Nav/Nav";
@@ -17,9 +18,11 @@ import { data } from "../Context/settings";
 import List from "../Components/List/List";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue, set } from "firebase/database";
+import { AppContext } from "../Context/AppContext";
 
 const HomeScreen = () => {
-  const [userScore, setUserScore] = React.useState(10);
+  const { contacts } = React.useContext(AppContext);
+
   const firebaseConfig = {
     apiKey: "AIzaSyBaatm0aQmB6vb1-hayXeEWbBomnmtkp7U",
     authDomain: "chat-app-f916a.firebaseapp.com",
@@ -42,7 +45,7 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.outline}>
-      <Nav title={"Chat App"} />
+      <Nav title={"Noxus"} />
       <SearchInput placeholder={"Search"} multiline={false} />
       <View>
         {/* <FlatList
@@ -50,19 +53,15 @@ const HomeScreen = () => {
           renderItem={({ item }) => <List item={item} />}
           keyExtractor={(item) => item.toString()}
         /> */}
-
-        <TextInput
-          placeholder="Send your new high score"
-          style={styles.text}
-          onChangeText={(text) => setUserScore(text)}
-        />
-
-        <TouchableOpacity
-          onPress={storeHighScore("user001223231", userScore)}
-          style={styles.btn}
-        >
-          <Text>Send data</Text>
-        </TouchableOpacity>
+        <View>
+          <ScrollView>
+            {contacts.map((contact, idx) => (
+              <Text key={idx}>
+                {contact.name} - {contact.phoneNumber}
+              </Text>
+            ))}
+          </ScrollView>
+        </View>
       </View>
     </View>
   );

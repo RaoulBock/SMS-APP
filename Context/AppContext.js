@@ -1,6 +1,6 @@
 import React from "react";
 import { APP_PAGES } from "./settings";
-import { initializeApp } from "firebase/app";
+import * as Contacts from "expo-contacts";
 import { getDatabase, ref, onValue, set } from "firebase/database";
 
 export const AppContext = React.createContext({
@@ -10,27 +10,32 @@ export const AppContext = React.createContext({
 
 const AppProvider = ({ children }) => {
   const [navPage, setNavPage] = React.useState(APP_PAGES.APP.HOME);
+  const [contacts, setContacts] = React.useState([]);
 
   React.useEffect(() => {
-    const firebaseConfig = {
-      apiKey: "AIzaSyBaatm0aQmB6vb1-hayXeEWbBomnmtkp7U",
-      authDomain: "chat-app-f916a.firebaseapp.com",
-      databaseURL: "https://chat-app-f916a-default-rtdb.firebaseio.com",
-      projectId: "chat-app-f916a",
-      storageBucket: "chat-app-f916a.appspot.com",
-      messagingSenderId: "118007497214",
-      appId: "1:118007497214:web:cd9acb622be29469aec0af",
-    };
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
+    const getContacts = async () => {
+      // Ask for permission to access contacts
+      const { status } = await Contacts.requestPermissionsAsync();
+      if (status === "granted") {
+        // Get all contacts
+        const { data } = await Contacts.getContactsAsync({
+          fields: [Contacts.Fields.PhoneNumbers, Contacts.Fields.Name],
+        });
 
-    const storeHighScore = (userId, score) => {
-      const db = getDatabase();
-      const reference = ref(db, "users/" + userId);
-      set(reference, {
-        highscore: score,
-      });
+        // Parse the JSON data
+        const parsedContacts = data.map((contact) => {
+          return {
+            name: contact.name,
+            phoneNumber: contact.phoneNumbers[0].number,
+          };
+        });
+
+        setContacts(parsedContacts);
+      } else {
+        throw new Error("Contacts permission not granted");
+      }
     };
+    getContacts();
   }, []);
 
   return (
@@ -38,6 +43,8 @@ const AppProvider = ({ children }) => {
       value={{
         navPage,
         setNavPage,
+        contacts,
+        setContacts,
       }}
     >
       {children}
