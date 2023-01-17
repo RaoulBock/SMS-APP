@@ -75,7 +75,9 @@ const HomeScreen = () => {
           }}
           ListFooterComponent={
             isLoading ? (
-              <ActivityIndicator size="large" color="#0000ff" />
+              <View style={styles.loadingContainer}>
+                <ActivityIndicator size="large" color="#0000ff" />
+              </View>
             ) : null
           }
         />
@@ -106,5 +108,10 @@ const styles = StyleSheet.create({
     width: 200,
     backgroundColor: "red",
     padding: 20,
+  },
+  loadingContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 8,
   },
 });
