@@ -62,7 +62,7 @@ const HomeScreen = () => {
       /> */}
       <View>
         <FlatList
-          data={filteredContacts}
+          data={contacts}
           renderItem={({ item }) => <List item={item} />}
           keyExtractor={(item) => `${item.id}-${item.name}`}
           initialNumToRender={10}

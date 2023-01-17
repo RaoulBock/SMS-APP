@@ -17,12 +17,15 @@ const List = ({ item }) => {
       useNativeDriver: true,
     }).start();
   }, []);
+
+  const name =
+    item.name.length > 25 ? item.name.substring(0, 20) + "..." : item.name;
   return (
     <Animated.View
       style={[styles.outline, { transform: [{ scale: scaleValue }] }]}
     >
       <View>
-        <Text style={styles.text}>{item.name}</Text>
+        <Text style={styles.text}>{name}</Text>
         <Text style={[styles.text, styles.message]}>{item.phoneNumber}</Text>
       </View>
       <View style={styles.grid}>
