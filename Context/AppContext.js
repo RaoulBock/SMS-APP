@@ -59,6 +59,8 @@ const AppProvider = ({ children }) => {
         setSearchTerm,
         filteredContacts,
         setFilteredContacts,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

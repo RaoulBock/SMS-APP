@@ -10,7 +10,7 @@ export const APP_ICON = {
   SEARCH: (
     <Ionicons
       name={"ios-search-outline"}
-      style={{ color: "#4877d8", fontSize: 20 }}
+      style={{ color: "#4877d8", fontSize: 28 }}
     />
   ),
   REFRESH: (

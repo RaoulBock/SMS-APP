@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
+  ActivityIndicator,
 } from "react-native";
 import React from "react";
 import Nav from "../Components/Nav/Nav";
@@ -21,8 +22,14 @@ import { getDatabase, ref, onValue, set } from "firebase/database";
 import { AppContext } from "../Context/AppContext";
 
 const HomeScreen = () => {
-  const { contacts, setSearchTerm, searchTerm, filteredContacts } =
-    React.useContext(AppContext);
+  const {
+    contacts,
+    setSearchTerm,
+    searchTerm,
+    filteredContacts,
+    isLoading,
+    setIsLoading,
+  } = React.useContext(AppContext);
 
   const firebaseConfig = {
     apiKey: "AIzaSyBaatm0aQmB6vb1-hayXeEWbBomnmtkp7U",
@@ -47,25 +54,38 @@ const HomeScreen = () => {
   return (
     <View style={styles.outline}>
       <Nav title={"Noxus"} />
-      <SearchInput
+      {/* <SearchInput
         placeholder={"Search"}
         multiline={false}
         onChangeText={setSearchTerm}
         value={searchTerm}
-      />
+      /> */}
       <View>
-        {/* <FlatList
-          data={data}
+        <FlatList
+          data={filteredContacts}
           renderItem={({ item }) => <List item={item} />}
-          keyExtractor={(item) => item.toString()}
-        /> */}
-        <View>
+          keyExtractor={(item) => `${item.id}-${item.name}`}
+          initialNumToRender={10}
+          onEndReachedThreshold={0.5}
+          maxToRenderPerBatch={10}
+          onEndReached={() => {
+            setIsLoading(true);
+            // fetch more data
+            setIsLoading(false);
+          }}
+          ListFooterComponent={
+            isLoading ? (
+              <ActivityIndicator size="large" color="#0000ff" />
+            ) : null
+          }
+        />
+        {/* <View>
           <ScrollView>
             {filteredContacts.map((contact, idx) => (
               <List item={contact} key={idx} />
             ))}
           </ScrollView>
-        </View>
+        </View> */}
       </View>
     </View>
   );
