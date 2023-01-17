@@ -23,3 +23,14 @@ export const APP_ICON = {
     />
   ),
 };
+
+export const data = [
+  {
+    id: 1,
+    name: "Raoul Bock",
+    phoneNumber: "1234567890",
+    message: "Hi There how are you going this morning",
+    timeStamp: "12:45",
+    isAvalible: false,
+  },
+];

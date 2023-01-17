@@ -1,21 +1,31 @@
-import { StyleSheet, Text, View, Platform, StatusBar } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Platform,
+  StatusBar,
+  Button,
+  FlatList,
+} from "react-native";
 import React from "react";
 import Nav from "../Components/Nav/Nav";
 import SearchInput from "../Components/Inputs/SearchInput";
 import * as SMS from "expo-sms";
-
-const isAvailable = await SMS.isAvailableAsync();
-if (isAvailable) {
-  // do your SMS stuff here
-} else {
-  // misfortune... there's no SMS available on this device
-}
+import { data } from "../Context/settings";
+import List from "../Components/List/List";
 
 const HomeScreen = () => {
   return (
     <View style={styles.outline}>
       <Nav title={"Chat App"} />
       <SearchInput placeholder={"Search"} multiline={false} />
+      <View>
+        <FlatList
+          data={data}
+          renderItem={({ item }) => <List item={item} />}
+          keyExtractor={(item) => item.toString()}
+        />
+      </View>
     </View>
   );
 };
