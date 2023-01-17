@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   btn: {
-    backgroundColor: "#eef0fe",
+    backgroundColor: "#23d265",
     padding: 5,
     borderRadius: 10,
   },

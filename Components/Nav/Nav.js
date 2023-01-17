@@ -32,6 +32,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     elevation: 5,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
   },
   title: {
     color: "#fff",

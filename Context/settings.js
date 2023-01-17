@@ -25,13 +25,13 @@ export const APP_ICON = {
   VIDEO: (
     <Ionicons
       name={"ios-videocam-outline"}
-      style={{ color: "#4877d8", fontSize: 28 }}
+      style={{ color: "#fff", fontSize: 28 }}
     />
   ),
   CALL: (
     <Ionicons
       name={"ios-call-outline"}
-      style={{ color: "#4877d8", fontSize: 28 }}
+      style={{ color: "#fff", fontSize: 28 }}
     />
   ),
 };
