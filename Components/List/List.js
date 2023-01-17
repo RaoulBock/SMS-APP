@@ -1,5 +1,12 @@
-import { StyleSheet, Text, View, Animated } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Animated,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
+import { APP_ICON } from "../../Context/settings";
 
 const List = ({ item }) => {
   const [scaleValue] = React.useState(new Animated.Value(0));
@@ -14,8 +21,18 @@ const List = ({ item }) => {
     <Animated.View
       style={[styles.outline, { transform: [{ scale: scaleValue }] }]}
     >
-      <Text style={styles.text}>{item.name}</Text>
-      <Text style={[styles.text, styles.message]}>{item.message}</Text>
+      <View>
+        <Text style={styles.text}>{item.name}</Text>
+        <Text style={[styles.text, styles.message]}>{item.phoneNumber}</Text>
+      </View>
+      <View style={styles.grid}>
+        <TouchableOpacity style={styles.btn}>
+          <Text>{APP_ICON.CALL}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.btn, { marginHorizontal: 10 }]}>
+          <Text>{APP_ICON.VIDEO}</Text>
+        </TouchableOpacity>
+      </View>
     </Animated.View>
   );
 };
@@ -25,16 +42,29 @@ export default List;
 const styles = StyleSheet.create({
   outline: {
     padding: 10,
-    marginHorizontal: 10,
-    borderRadius: 10,
-    marginVertical: 10,
-    backgroundColor: "#ddd",
+    paddingHorizontal: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderBottomColor: "#f6f6f6",
+    borderBottomWidth: 1,
   },
   text: {
     fontWeight: "500",
     color: "#404040",
+    fontSize: 20,
   },
   message: {
     color: "gray",
+    fontSize: 15,
+  },
+  grid: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  btn: {
+    backgroundColor: "#eef0fe",
+    padding: 5,
+    borderRadius: 10,
   },
 });

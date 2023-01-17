@@ -22,6 +22,18 @@ export const APP_ICON = {
       style={{ color: "#4877d8", fontSize: 28 }}
     />
   ),
+  VIDEO: (
+    <Ionicons
+      name={"ios-videocam-outline"}
+      style={{ color: "#4877d8", fontSize: 28 }}
+    />
+  ),
+  CALL: (
+    <Ionicons
+      name={"ios-call-outline"}
+      style={{ color: "#4877d8", fontSize: 28 }}
+    />
+  ),
 };
 
 export const data = [

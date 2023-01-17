@@ -62,9 +62,7 @@ const HomeScreen = () => {
         <View>
           <ScrollView>
             {filteredContacts.map((contact, idx) => (
-              <Text key={idx}>
-                {contact.name} - {contact.phoneNumber}
-              </Text>
+              <List item={contact} key={idx} />
             ))}
           </ScrollView>
         </View>
