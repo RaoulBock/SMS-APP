@@ -7,10 +7,10 @@ const Nav = ({ title }) => {
     <View style={styles.outline}>
       <Text style={styles.title}>{title}</Text>
       <View style={styles.grid}>
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity style={[styles.btn, { marginRight: 10 }]}>
           <Text>{APP_ICON.REFRESH}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.btn, { marginHorizontal: 10 }]}>
+        <TouchableOpacity style={[styles.btn, {}]}>
           <Text>{APP_ICON.ADD}</Text>
         </TouchableOpacity>
       </View>

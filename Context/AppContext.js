@@ -13,6 +13,7 @@ const AppProvider = ({ children }) => {
   const [contacts, setContacts] = React.useState([]);
   const [searchTerm, setSearchTerm] = React.useState("");
   const [filteredContacts, setFilteredContacts] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
     const getContacts = async () => {

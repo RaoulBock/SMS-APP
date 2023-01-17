@@ -26,10 +26,10 @@ const List = ({ item }) => {
         <Text style={[styles.text, styles.message]}>{item.phoneNumber}</Text>
       </View>
       <View style={styles.grid}>
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity style={[styles.btn, { marginRight: 10 }]}>
           <Text>{APP_ICON.CALL}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.btn, { marginHorizontal: 10 }]}>
+        <TouchableOpacity style={[styles.btn, {}]}>
           <Text>{APP_ICON.VIDEO}</Text>
         </TouchableOpacity>
       </View>
