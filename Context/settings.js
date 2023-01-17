@@ -16,4 +16,10 @@ export const APP_ICON = {
   REFRESH: (
     <Ionicons name={"ios-refresh"} style={{ color: "#4b6584", fontSize: 28 }} />
   ),
+  ADD: (
+    <Ionicons
+      name={"ios-add-outline"}
+      style={{ color: "#4b6584", fontSize: 28 }}
+    />
+  ),
 };

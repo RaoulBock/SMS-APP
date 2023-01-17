@@ -2,6 +2,14 @@ import { StyleSheet, Text, View, Platform, StatusBar } from "react-native";
 import React from "react";
 import Nav from "../Components/Nav/Nav";
 import SearchInput from "../Components/Inputs/SearchInput";
+import * as SMS from "expo-sms";
+
+const isAvailable = await SMS.isAvailableAsync();
+if (isAvailable) {
+  // do your SMS stuff here
+} else {
+  // misfortune... there's no SMS available on this device
+}
 
 const HomeScreen = () => {
   return (

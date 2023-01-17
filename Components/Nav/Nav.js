@@ -6,9 +6,14 @@ const Nav = ({ title }) => {
   return (
     <View style={styles.outline}>
       <Text style={styles.title}>{title}</Text>
-      <TouchableOpacity>
-        <Text>{APP_ICON.REFRESH}</Text>
-      </TouchableOpacity>
+      <View style={styles.grid}>
+        <TouchableOpacity>
+          <Text>{APP_ICON.REFRESH}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{ marginHorizontal: 10 }}>
+          <Text>{APP_ICON.ADD}</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -20,7 +25,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingVertical: 10,
     paddingHorizontal: 10,
-
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -29,5 +33,9 @@ const styles = StyleSheet.create({
     color: "#404040",
     fontWeight: "500",
     fontSize: 18,
+  },
+  grid: {
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
