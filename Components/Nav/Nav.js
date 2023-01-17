@@ -31,9 +31,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    elevation: 5,
   },
   title: {
-    color: "#404040",
+    color: "#fff",
     fontWeight: "500",
     fontSize: 18,
   },
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   btn: {
-    backgroundColor: "#eef0fe",
+    backgroundColor: "#23d265",
     padding: 5,
     borderRadius: 10,
   },
