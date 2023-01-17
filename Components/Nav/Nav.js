@@ -25,7 +25,7 @@ export default Nav;
 
 const styles = StyleSheet.create({
   outline: {
-    backgroundColor: "white",
+    backgroundColor: "#00a76b",
     paddingVertical: 10,
     paddingHorizontal: 10,
     flexDirection: "row",
