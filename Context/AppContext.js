@@ -11,6 +11,8 @@ export const AppContext = React.createContext({
 const AppProvider = ({ children }) => {
   const [navPage, setNavPage] = React.useState(APP_PAGES.APP.HOME);
   const [contacts, setContacts] = React.useState([]);
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const [filteredContacts, setFilteredContacts] = React.useState([]);
 
   React.useEffect(() => {
     const getContacts = async () => {
@@ -38,6 +40,13 @@ const AppProvider = ({ children }) => {
     getContacts();
   }, []);
 
+  React.useEffect(() => {
+    const filteredData = contacts.filter((contact) => {
+      return contact.name.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+    setFilteredContacts(filteredData);
+  }, [searchTerm]);
+
   return (
     <AppContext.Provider
       value={{
@@ -45,6 +54,10 @@ const AppProvider = ({ children }) => {
         setNavPage,
         contacts,
         setContacts,
+        searchTerm,
+        setSearchTerm,
+        filteredContacts,
+        setFilteredContacts,
       }}
     >
       {children}

@@ -2,7 +2,7 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 import React from "react";
 import { APP_ICON } from "../../Context/settings";
 
-const SearchInput = ({ placeholder, value, multiline }) => {
+const SearchInput = ({ placeholder, value, multiline, onChangeText }) => {
   return (
     <View style={styles.outline}>
       <Text>{APP_ICON.SEARCH}</Text>
@@ -11,6 +11,7 @@ const SearchInput = ({ placeholder, value, multiline }) => {
         value={value}
         multiline={multiline}
         style={styles.input}
+        onChangeText={onChangeText}
       />
     </View>
   );

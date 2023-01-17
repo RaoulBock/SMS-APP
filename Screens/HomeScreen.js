@@ -21,7 +21,8 @@ import { getDatabase, ref, onValue, set } from "firebase/database";
 import { AppContext } from "../Context/AppContext";
 
 const HomeScreen = () => {
-  const { contacts } = React.useContext(AppContext);
+  const { contacts, setSearchTerm, searchTerm, filteredContacts } =
+    React.useContext(AppContext);
 
   const firebaseConfig = {
     apiKey: "AIzaSyBaatm0aQmB6vb1-hayXeEWbBomnmtkp7U",
@@ -46,7 +47,12 @@ const HomeScreen = () => {
   return (
     <View style={styles.outline}>
       <Nav title={"Noxus"} />
-      <SearchInput placeholder={"Search"} multiline={false} />
+      <SearchInput
+        placeholder={"Search"}
+        multiline={false}
+        onChangeText={setSearchTerm}
+        value={searchTerm}
+      />
       <View>
         {/* <FlatList
           data={data}
@@ -55,7 +61,7 @@ const HomeScreen = () => {
         /> */}
         <View>
           <ScrollView>
-            {contacts.map((contact, idx) => (
+            {filteredContacts.map((contact, idx) => (
               <Text key={idx}>
                 {contact.name} - {contact.phoneNumber}
               </Text>
