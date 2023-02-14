@@ -3,6 +3,8 @@ import { StatusBar } from "expo-status-bar";
 import AppProvider, { AppContext } from "./Context/AppContext";
 import { APP_PAGES } from "./Context/settings";
 import HomeScreen from "./Screens/HomeScreen";
+import LoginScreen from "./Screens/LoginScreen";
+import RegisterScreen from "./Screens/RegisterScreen";
 
 function App() {
   return (
@@ -31,6 +33,8 @@ const NavWrapper = () => {
         translucent={true}
       />
 
+      {navPage === APP_PAGES.APP.LOGIN && <LoginScreen />}
+      {navPage === APP_PAGES.APP.REGISTER && <RegisterScreen />}
       {navPage === APP_PAGES.APP.HOME && <HomeScreen />}
     </>
   );

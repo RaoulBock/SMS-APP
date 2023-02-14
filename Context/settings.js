@@ -1,7 +1,9 @@
 export const APP_PAGES = {
   APP: {
     HOME: "HOME",
-  },
+    LOGIN: "LOGIN",
+    REGISTER: "REGISTER"
+  }
 };
 
 import { Ionicons } from "react-native-vector-icons";
@@ -33,7 +35,7 @@ export const APP_ICON = {
       name={"ios-call-outline"}
       style={{ color: "#fff", fontSize: 28 }}
     />
-  ),
+  )
 };
 
 export const data = [
@@ -43,6 +45,6 @@ export const data = [
     phoneNumber: "1234567890",
     message: "Hi There how are you going this morning",
     timeStamp: "12:45",
-    isAvalible: false,
-  },
+    isAvalible: false
+  }
 ];

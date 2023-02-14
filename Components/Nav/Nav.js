@@ -1,22 +1,68 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  ScrollView,
+} from "react-native";
 import React from "react";
 import { APP_ICON } from "../../Context/settings";
 
 const Nav = ({ title }) => {
+  const [activeOption, setActiveOption] = React.useState("Home");
   return (
-    <View style={styles.outline}>
-      <Text style={styles.title}>{title}</Text>
-      <View style={styles.grid}>
-        <TouchableOpacity style={[styles.btn]}>
-          <Text>{APP_ICON.REFRESH}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.btn, { marginHorizontal: 10 }]}>
-          <Text>{APP_ICON.ADD}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.btn, {}]}>
-          <Text>{APP_ICON.SEARCH}</Text>
-        </TouchableOpacity>
-      </View>
+    <View>
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        style={styles.navScrollView}
+      >
+        <View style={styles.navOptionContainer}>
+          <Text
+            style={[styles.navOption, activeOption === "Home" && styles.active]}
+            onPress={() => setActiveOption("Home")}
+          >
+            Home
+          </Text>
+          <View
+            style={[
+              styles.indicator,
+              activeOption === "Home" && styles.activeIndicator,
+            ]}
+          />
+        </View>
+        <View style={styles.navOptionContainer}>
+          <Text
+            style={[styles.navOption, activeOption === "Chat" && styles.active]}
+            onPress={() => setActiveOption("Chat")}
+          >
+            Chat
+          </Text>
+          <View
+            style={[
+              styles.indicator,
+              activeOption === "Chat" && styles.activeIndicator,
+            ]}
+          />
+        </View>
+        <View style={styles.navOptionContainer}>
+          <Text
+            style={[
+              styles.navOption,
+              activeOption === "Status" && styles.active,
+            ]}
+            onPress={() => setActiveOption("Status")}
+          >
+            Status
+          </Text>
+          <View
+            style={[
+              styles.indicator,
+              activeOption === "Status" && styles.activeIndicator,
+            ]}
+          />
+        </View>
+      </ScrollView>
     </View>
   );
 };
